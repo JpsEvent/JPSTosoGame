@@ -1,0 +1,58 @@
+package gg.jps.jpstosogame.game;
+
+import gg.jps.jpstosogame.JpsTosoGame;
+import gg.jps.jpstosogame.util.TimeFormat;
+import pakira.scheduler.Scheduler;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+
+public class TosoTime {
+
+    private final TosoGame game;
+    private final Scheduler scheduler;
+
+    private final AtomicLong timer = new AtomicLong();
+
+    public TosoTime(TosoGame game) {
+        this.game = game;
+        scheduler = new Scheduler(JpsTosoGame.getInstance(), false);
+    }
+
+    public void start() {
+        scheduler.every(1, TimeUnit.SECONDS).run(() -> {
+            final long timeLeft = (40 * 60 - timer.getAndIncrement());
+            final String formattedTimeLeft = TimeFormat.format((int) timeLeft);
+
+            // 割愛
+            if (timeLeft == 2370) {
+                game.getMissionManager().startPlaceBlockMission();
+            }
+
+            if (timeLeft == 2220) {
+                game.getMissionManager().startBreakMission();
+            }
+
+            if (timeLeft == 1500) {
+                game.getMissionManager().startCraftMission();
+            }
+
+            if (timeLeft == 300) {
+                game.creativeMode();
+            }
+
+            if (timeLeft == 0) {
+                game.end();
+                scheduler.cancel();
+                return;
+            }
+
+            game.getBossBar().setBossBar(String.format("残り時間: %s", formattedTimeLeft));
+        });
+    }
+
+    public void cancel() {
+        scheduler.cancel();
+    }
+}

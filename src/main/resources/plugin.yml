@@ -1,0 +1,4 @@
+name: JpsTosoGame
+version: '${project.version}'
+main: gg.jps.jpstosogame.JpsTosoGame
+api-version: 1.19
