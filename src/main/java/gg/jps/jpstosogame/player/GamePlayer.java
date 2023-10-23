@@ -80,4 +80,9 @@ public class GamePlayer extends OnlinePlayer {
     public void flyable() {
         player.setAllowFlight(true);
     }
+
+    public void unEquip() {
+        final PlayerInventory inventory = player.getInventory();
+        inventory.clear();
+    }
 }

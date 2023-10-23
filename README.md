@@ -4,7 +4,7 @@
 - [x] エメラルドブロックをクリックで`prisonLocation`へTP
 - [x] スポーン位置を`prisonLocation`へ
 - [x] レッドストーンブロックをクリックで`opningGameLocation`へTP
--  [x] スポーン位置を`prisonLocation`へ
+- [x] スポーン位置を`prisonLocation`へ
 
 # 2.opゲーム
 - [x] ダイヤモンドブロックをクリックで抽選
@@ -66,7 +66,7 @@ https://www.youtube.com/live/17wE4YJJrD8?si=CrX74Q_qEUkBS_Uj&t=1627
 - [x] 経過15分で発生
 - [x] タイトル：#e第２ミッション：ハンター強化イベントを阻止せよ
 - [x] サウンド：item.goat_horn.sound.4
-  - [x]それぞれの<CoreLocation>のブロックが黒曜石に変わる
+- [x]それぞれの<CoreLocation>のブロックが黒曜石に変わる
 
 - [x] 黒曜石を壊すと
   全体メッセージ:#b<player>がコアを破壊しました。残りコア(xCore/yCore)
@@ -97,7 +97,7 @@ https://www.youtube.com/live/17wE4YJJrD8?si=CrX74Q_qEUkBS_Uj&t=1627
 - [x] この時、赤の羊毛と青の羊毛を持っているプレイヤーの数が同じor＋－1になるように配る。
   ※ランダムなので赤羊毛を持っている人が圧倒的に多くなる状況ケア
 
-- [x]赤と青の羊毛をクラフトでトリップワイヤーフックが作れるように。
+- [x] 赤と青の羊毛をクラフトでトリップワイヤーフックが作れるように。
 - [x] 名前を「#g脱出のカギ」に変更
 
 - [ ] ゲーム時間残り0秒のとき
@@ -114,7 +114,7 @@ https://www.youtube.com/live/17wE4YJJrD8?si=2CsLjB_RoxR9HNWc&t=3992
 
 - [x] 金の斧右クリックでその場所に雷を落とす
 - [x] 全員が動けるように
-  - [x]タイトル：#c最終ミッション：エリアから脱出せよ
+- [x] タイトル：#c最終ミッション：エリアから脱出せよ
 - [x] サウンド：item.goat_horn.sound.5
 - [x] <escapeBossBar>起動
 

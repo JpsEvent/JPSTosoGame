@@ -3,12 +3,15 @@ package gg.jps.jpstosogame.game.handler;
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.jetbrains.annotations.Async;
 import pakira.game.Handler;
 
 import java.util.*;
@@ -45,6 +48,22 @@ public class InGameHandler extends Handler {
         getPlayers(GamePlayer.class).forEach(GamePlayer::glow);
         showResult();
         nextHandler();
+    }
+
+    private void onTeamChat(AsyncPlayerChatEvent event) {
+
+        event.setCancelled(true);
+        final GamePlayer player = JpsTosoGame.getInstance().getPlayer(event.getPlayer());
+        final String message = event.getMessage();
+        if (game.isSpectator(player.getPlayer())) {
+            game.sendMessageSpectators(player, message);
+            return;
+        }
+            /*if (event.getMessage().startsWith("@")) {
+                game.shout(sender, message.substring(1));
+                return;
+            }*/
+        game.sendMessageOwnTeam(player, message);
     }
 
     @EventHandler
