@@ -5,11 +5,11 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Optional;
 import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.bukkit.contexts.OnlinePlayer;
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoConfig;
 import org.bukkit.entity.Player;
-import pakira.player.OnlinePlayer;
 
 import java.util.Locale;
 
