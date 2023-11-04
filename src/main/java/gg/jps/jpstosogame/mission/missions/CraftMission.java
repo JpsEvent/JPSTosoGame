@@ -15,7 +15,7 @@ public class CraftMission extends Mission {
     private final Random random = new Random();
 
     public CraftMission() {
-        super("第3ミッション：脱出のカギをゲットせよ", Sound.ITEM_GOAT_HORN_SOUND_4);
+        super("&e第3ミッション：脱出のカギをゲットせよ", Sound.ITEM_GOAT_HORN_SOUND_4);
     }
 
     @Override
