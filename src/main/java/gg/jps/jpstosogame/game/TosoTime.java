@@ -42,6 +42,7 @@ public class TosoTime {
             }
 
             if (timeLeft == 0) {
+                game.getBossBar().hide();
                 game.end();
                 scheduler.cancel();
                 return;
