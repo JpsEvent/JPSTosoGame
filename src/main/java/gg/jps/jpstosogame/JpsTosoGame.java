@@ -152,4 +152,8 @@ public final class JpsTosoGame extends JavaPlugin {
     public GamePlayer getPlayer(Player player) {
         return playerManager.getPlayer(player);
     }
+
+    public void reload() {
+        loadGame();
+    }
 }
