@@ -46,6 +46,7 @@ public abstract class Game {
     }
 
     public final void end() {
+        bossBar.hide();
         getCurrentHandler().end();
     }
 
