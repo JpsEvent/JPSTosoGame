@@ -4,14 +4,20 @@ import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import pakira.game.Handler;
 import pakira.player.OnlinePlayer;
+import pakira.util.ItemBuilder;
 
 import java.util.*;
 
@@ -59,6 +65,19 @@ public class InGameHandler extends Handler {
     @Override
     public void join(OnlinePlayer player) {
         getGame().getBossBar().addPlayer(player);
+    }
+
+    @EventHandler
+    private void onAxe(PlayerInteractEvent event) {
+        final ItemStack item = event.getItem();
+        final GamePlayer player = JpsTosoGame.getInstance().getPlayer(event.getPlayer());
+
+        if (event.getHand() != EquipmentSlot.HAND) return;
+        if (item == null) return;
+
+        if (item.isSimilar(ItemBuilder.of(Material.GOLDEN_AXE).build())) {
+            game.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
+        }
     }
 
     @EventHandler
