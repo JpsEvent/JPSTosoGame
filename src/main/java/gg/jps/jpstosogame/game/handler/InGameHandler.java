@@ -48,6 +48,7 @@ public class InGameHandler extends Handler {
         nextHandler();
     }
 
+    @EventHandler
     private void onTeamChat(AsyncPlayerChatEvent event) {
 
         event.setCancelled(true);
