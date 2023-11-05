@@ -34,19 +34,29 @@ public class SetCommand extends BaseCommand {
         });
     }
 
+    @Subcommand("reload")
+    @CommandPermission("toso.reload")
+    public void on(Player player) {
+        JpsTosoGame.getInstance().reload();
+        player.sendMessage("設定を読み込みました");
+    }
+
     ///jtg hunter <playerID>
     @Subcommand("hunter")
     @CommandPermission("toso.hunter")
     public void on(Player player, HunterOption option, @Optional OnlinePlayer onlinePlayer) {
         JpsTosoGame.getInstance().getGame().ifPresent(game -> {
-            final Player target = onlinePlayer.getPlayer();
+
 
             switch (option) {
                 case ADD -> {
-                    if (target == null) return;
-                    game.addHunter(JpsTosoGame.getInstance().getPlayer(target));
+                    if (onlinePlayer == null) return;
+                    game.addHunter(JpsTosoGame.getInstance().getPlayer(onlinePlayer.getPlayer()));
                 }
-                case REMOVE -> game.removeHunter(JpsTosoGame.getInstance().getPlayer(target));
+                case REMOVE -> {
+                    if (onlinePlayer == null) return;
+                    game.removeHunter(JpsTosoGame.getInstance().getPlayer(onlinePlayer.getPlayer()));
+                }
                 case LIST -> game.sendHunterList(player);
             }
         });
