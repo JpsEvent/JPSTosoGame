@@ -44,7 +44,7 @@ public class TosoTime {
 
             if (timeLeft == 0) {
                 game.getBossBar().hide();
-                game.end();
+                game.getMissionManager().startEscapeMission();
                 scheduler.cancel();
                 return;
             }
