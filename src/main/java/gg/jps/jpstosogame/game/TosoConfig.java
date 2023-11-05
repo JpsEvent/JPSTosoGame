@@ -6,28 +6,38 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
 @Setter
-public final class TosoConfig {
+public class TosoConfig {
 
-    private LocationData waitingLocation;
+    public LocationData waitingLocation;
 
-    private LocationData prisonLocation;
+    public LocationData prisonLocation;
 
-    private LocationData openingGameLocation;
+    public LocationData openingGameLocation;
 
-    private LocationData goalLocation;
+    public LocationData goalLocation;
 
-    private CuboidData goalArea;
+    public CuboidData goalArea;
 
-    private Set<LocationData> explosionHunterBoxes;
+    public Set<LocationData> explosionHunterBoxes;
 
-    private Set<LocationData> coreLocations;
+    public Set<LocationData> coreLocations;
 
-    public TosoConfig(LocationData waitingLocation) {
+    public long gameTime;
+
+    public long placeBlockMissionTime;
+
+    public long breakMissionTime;
+
+    public long craftMissionTime;
+
+    public long escapeMission;
+
+
+    /*public TosoConfig(LocationData waitingLocation) {
         this.waitingLocation = waitingLocation;
         this.prisonLocation = waitingLocation;
         this.openingGameLocation = waitingLocation;
@@ -35,6 +45,29 @@ public final class TosoConfig {
         this.explosionHunterBoxes = new HashSet<>();
         this.coreLocations = new HashSet<>();
         this.goalArea = new CuboidData(waitingLocation, waitingLocation);
+        this.gameTime = 40 * 60;
+        this.placeBlockMissionTime = gameTime - (10 * 60);
+        this.breakMissionTime = gameTime - (15 * 60);
+        this.craftMissionTime = gameTime - (20 * 60);
+        this.escapeMission = gameTime - (25 * 60);
+    }*/
+
+    public TosoConfig(LocationData waitingLocation, LocationData prisonLocation, LocationData openingGameLocation,
+                      LocationData goalLocation, Set<LocationData> explosionHunterBoxes, Set<LocationData> coreLocations, LocationData goalAreaPosOne, LocationData goalAreaPosTwo,
+                      long gameTime, long blockTime, long breakTime, long craftTime, long escapeTime) {
+
+        this.waitingLocation = waitingLocation;
+        this.prisonLocation = prisonLocation;
+        this.openingGameLocation = openingGameLocation;
+        this.goalLocation = goalLocation;
+        this.explosionHunterBoxes = new HashSet<>(explosionHunterBoxes);
+        this.coreLocations = new HashSet<>(coreLocations);
+        this.goalArea = new CuboidData(goalAreaPosOne, goalAreaPosTwo);
+        this.gameTime = gameTime;
+        this.placeBlockMissionTime = gameTime - blockTime;
+        this.breakMissionTime = gameTime - breakTime;
+        this.craftMissionTime = gameTime - craftTime;
+        this.escapeMission = gameTime - escapeTime;
     }
 
     public void setCoreLocations(LocationData coreLocations) {

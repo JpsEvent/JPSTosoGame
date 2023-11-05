@@ -21,23 +21,24 @@ public class TosoTime {
 
     public void start() {
         scheduler.every(1, TimeUnit.SECONDS).run(() -> {
-            final long timeLeft = (40 * 60 - timer.getAndIncrement());
+            final long gameTime = game.getConfig().getGameTime();
+            final long timeLeft = (gameTime - timer.getAndIncrement());
             final String formattedTimeLeft = TimeFormat.format((int) timeLeft);
 
             // 割愛
-            if (timeLeft == 2370) {
+            if (timeLeft == game.getConfig().getPlaceBlockMissionTime()) {
                 game.getMissionManager().startPlaceBlockMission();
             }
 
-            if (timeLeft == 2220) {
+            if (timeLeft == game.getConfig().getBreakMissionTime()) {
                 game.getMissionManager().startBreakMission();
             }
 
-            if (timeLeft == 1500) {
+            if (timeLeft == game.getConfig().getCraftMissionTime()) {
                 game.getMissionManager().startCraftMission();
             }
 
-            if (timeLeft == 300) {
+            if (timeLeft == game.getConfig().getEscapeMission()) {
                 game.creativeMode();
             }
 
