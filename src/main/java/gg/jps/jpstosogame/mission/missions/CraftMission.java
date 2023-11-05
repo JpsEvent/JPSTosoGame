@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import pakira.player.OnlinePlayer;
 
 import java.util.Random;
 
@@ -23,8 +24,9 @@ public class CraftMission extends Mission {
         if (JpsTosoGame.getInstance().getGame().isEmpty()) return;
         final TosoGame game = JpsTosoGame.getInstance().getGame().get();
 
-        game.getEscapePlayers().forEach(uuid ->
-                JpsTosoGame.getInstance().getPlayer(uuid).ifPresent(gamePlayer -> giveWoolRandomPlayer(gamePlayer.getPlayer())));
+        game.getPlayers().stream().filter(player -> !game.isHunter(player.getPlayer())).map(OnlinePlayer::getUniqueId).forEach(uuid -> {
+            JpsTosoGame.getInstance().getPlayer(uuid).ifPresent(gamePlayer -> giveWoolRandomPlayer(gamePlayer.getPlayer()));
+        });
     }
 
     @Override
