@@ -35,7 +35,7 @@ public class SetCommand extends BaseCommand {
     }
 
     ///jtg hunter <playerID>
-    @Subcommand("hunter add")
+    @Subcommand("hunter")
     @CommandPermission("toso.hunter")
     public void on(Player player, HunterOption option, @Optional OnlinePlayer onlinePlayer) {
         JpsTosoGame.getInstance().getGame().ifPresent(game -> {
