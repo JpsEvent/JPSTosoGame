@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import pakira.game.Handler;
+import pakira.player.OnlinePlayer;
 
 import java.util.*;
 
@@ -46,6 +47,18 @@ public class InGameHandler extends Handler {
         getPlayers(GamePlayer.class).forEach(GamePlayer::glow);
         showResult();
         nextHandler();
+        reset();
+    }
+
+    @Override
+    public void reset() {
+        escapedPlayers.clear();
+        kills.clear();
+    }
+
+    @Override
+    public void join(OnlinePlayer player) {
+        getGame().getBossBar().addPlayer(player);
     }
 
     @EventHandler
