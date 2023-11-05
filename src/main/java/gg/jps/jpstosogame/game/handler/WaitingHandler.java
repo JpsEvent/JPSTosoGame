@@ -34,6 +34,7 @@ public class WaitingHandler extends Handler {
     @Override
     public void join(OnlinePlayer player) {
         // 待機している間は待機所にテレポート
+        player.getPlayer().getActivePotionEffects().clear();
         getGame().teleportWaitingLocation((GamePlayer) player);
     }
 
