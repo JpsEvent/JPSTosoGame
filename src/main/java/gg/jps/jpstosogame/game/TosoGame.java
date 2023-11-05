@@ -58,6 +58,7 @@ public class TosoGame extends Game {
     }
 
     public void stopGame() {
+        getBossBar().hide();
         tosoTime.cancel();
     }
 
