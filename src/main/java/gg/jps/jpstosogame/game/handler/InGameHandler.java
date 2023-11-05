@@ -77,6 +77,7 @@ public class InGameHandler extends Handler {
 
         if (item.isSimilar(ItemBuilder.of(Material.GOLDEN_AXE).build())) {
             game.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
+            game.getMissionManager().startEscapeMission();
         }
     }
 
