@@ -35,6 +35,8 @@ public class TosoGame extends Game {
 
     private final Cuboid goalArea;
 
+    private final Cuboid prisonArea;
+
     private final Set<UUID> escapePlayers = new HashSet<>();
 
     private final Set<UUID> hunterPlayers = new HashSet<>();
@@ -45,6 +47,7 @@ public class TosoGame extends Game {
         this.tosoTime = new TosoTime(this);
         this.missionManager = new MissionManager(this);
         this.goalArea = new Cuboid(config.getGoalArea().getPos1().getLocation(), config.getGoalArea().getPos2().getLocation());
+        this.prisonArea = new Cuboid(config.getPrisonArea().getPos1().getLocation(), config.getPrisonArea().getPos2().getLocation());
 
         getCurrentHandler().register(JpsTosoGame.getInstance());
     }
@@ -100,6 +103,10 @@ public class TosoGame extends Game {
 
     public boolean isInGoalArea(Player player) {
         return goalArea.isIn(player);
+    }
+
+    public boolean isInPrisonArea(Player player) {
+        return prisonArea.isIn(player);
     }
 
     public boolean isHunter(Player player) {

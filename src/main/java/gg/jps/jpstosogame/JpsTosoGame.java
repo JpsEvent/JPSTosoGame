@@ -2,6 +2,7 @@ package gg.jps.jpstosogame;
 
 import co.aikar.commands.PaperCommandManager;
 import gg.jps.jpstosogame.command.SetCommand;
+import gg.jps.jpstosogame.data.CuboidData;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoConfig;
 import gg.jps.jpstosogame.game.TosoGame;
@@ -80,7 +81,7 @@ public final class JpsTosoGame extends JavaPlugin {
             final LocationData locationData = LocationData.at(Bukkit.getWorlds().get(0).getSpawnLocation());
             try {
                 final TosoConfig config = new TosoConfig(locationData, locationData, locationData, locationData, Set.of(locationData),
-                        Set.of(locationData), locationData, locationData, 300, 60, 120, 180, 240, 60, 20, 12);
+                        Set.of(locationData), locationData, locationData, new CuboidData(locationData, locationData), 300, 60, 120, 180, 240, 60, 20, 12);
                 JsonUtil.saveJsonFile(new File(getDataFolder(), "config.json"), config);
                 loadGame();
             } catch (IOException e) {
