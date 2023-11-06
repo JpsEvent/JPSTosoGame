@@ -145,6 +145,7 @@ public class InGameHandler extends Handler {
     public void freeze() {
         game.getPlayers(GamePlayer.class).forEach(player -> {
             if (game.isSpectator(player.getPlayer())) return;
+            if (player.getPlayer().isOp()) return;
             if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) {
                 player.freeze();
             } else {
