@@ -3,13 +3,12 @@ package gg.jps.jpstosogame.game.handler;
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
-import org.bukkit.*;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -109,6 +108,15 @@ public class InGameHandler extends Handler {
 
         addKill(player.getKiller());
         player.getWorld().strikeLightningEffect(player.getLocation());
+    }
+
+    public void freeze() {
+        game.getPlayers(GamePlayer.class).forEach(player -> {
+            if (game.isSpectator(player.getPlayer())) return;
+            if (!player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) return;
+
+            player.freeze();
+        });
     }
 
     private void respawn(Player player) {
