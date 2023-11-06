@@ -49,7 +49,7 @@ public class EventListener implements Listener {
     private void on(BlockPlaceEvent event) {
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
         final Block bottomBlock = event.getBlockPlaced().getRelative(BlockFace.DOWN);
-        if (bottomBlock.getType() == Material.POLISHED_ANDESITE && event.getBlock().getType() == Material.BLACKSTONE) return;
+        if (bottomBlock.getType() == Material.POLISHED_ANDESITE && event.getBlock().getType() == Material.POLISHED_BLACKSTONE_PRESSURE_PLATE) return;
         event.setCancelled(true);
     }
 }
