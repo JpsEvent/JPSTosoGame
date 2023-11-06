@@ -1,18 +1,21 @@
 package gg.jps.jpstosogame.game.handler;
 
 import gg.jps.jpstosogame.JpsTosoGame;
+import gg.jps.jpstosogame.game.TosoConfig;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import pakira.game.Handler;
@@ -25,7 +28,6 @@ public class InGameHandler extends Handler {
 
     private final Map<UUID, Long> kills = new HashMap<>();
     private final Set<UUID> escapedPlayers = new HashSet<>();
-
     private final TosoGame game;
 
     public InGameHandler(TosoGame game) {
@@ -79,6 +81,20 @@ public class InGameHandler extends Handler {
             game.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
             game.getMissionManager().startEscapeMission();
         }
+    }
+
+    @EventHandler
+    private void onMove(PlayerMoveEvent event) {
+        if (game.isInGoalArea(event.getPlayer())) {
+            game.getInGameHandler().goal(event.getPlayer());
+        }
+    }
+
+    private void goal(Player player) {
+        broadcast(String.format("%sが脱出に成功しました。", player.getName()));
+        sound(Sound.UI_TOAST_CHALLENGE_COMPLETE);
+        player.teleport(game.getConfig().getGoalLocation().getLocation());
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
     }
 
     @EventHandler

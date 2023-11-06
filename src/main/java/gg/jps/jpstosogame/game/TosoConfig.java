@@ -2,6 +2,7 @@ package gg.jps.jpstosogame.game;
 
 import gg.jps.jpstosogame.data.CuboidData;
 import gg.jps.jpstosogame.data.LocationData;
+import gg.jps.jpstosogame.util.Cuboid;
 import lombok.Getter;
 import lombok.Setter;
 
