@@ -2,6 +2,7 @@ package gg.jps.jpstosogame.game;
 
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.util.TimeFormat;
+import org.bukkit.Sound;
 import pakira.scheduler.Scheduler;
 
 import java.util.concurrent.TimeUnit;
@@ -44,6 +45,8 @@ public class TosoTime {
 
             if (timeLeft == 0) {
                 game.getBossBar().hide();
+                game.title("&dゲーム終了", "");
+                game.sound(Sound.ENTITY_ENDER_DRAGON_DEATH);
                 scheduler.cancel();
                 return;
             }
