@@ -5,6 +5,7 @@ import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -58,8 +59,8 @@ public class WaitingHandler extends Handler {
     }
 
     private void randomHunterChoose(GamePlayer player) {
-        /*if (player.getPlayer().getCooldown(Material.AIR) != 0) return;
-        player.getPlayer().setCooldown(Material.AIR, 20 * 60);*/
+        if (player.getPlayer().getCooldown(Material.AIR) != 0) return;
+        player.getPlayer().setCooldown(Material.AIR, Math.toIntExact(game.getConfig().getCoolTime()));
 
         broadcast(String.format("%s 抽選中・・・", player.getUsername()));
 

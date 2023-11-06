@@ -12,29 +12,31 @@ import java.util.Set;
 @Setter
 public class TosoConfig {
 
-    public LocationData waitingLocation;
+    private LocationData waitingLocation;
 
-    public LocationData prisonLocation;
+    private LocationData prisonLocation;
 
-    public LocationData openingGameLocation;
+    private LocationData openingGameLocation;
 
-    public LocationData goalLocation;
+    private LocationData goalLocation;
 
-    public CuboidData goalArea;
+    private CuboidData goalArea;
 
-    public Set<LocationData> explosionHunterBoxes;
+    private Set<LocationData> explosionHunterBoxes;
 
-    public Set<LocationData> coreLocations;
+    private Set<LocationData> coreLocations;
 
-    public long gameTime;
+    private long gameTime;
 
-    public long placeBlockMissionTime;
+    private long placeBlockMissionTime;
 
-    public long breakMissionTime;
+    private long breakMissionTime;
 
-    public long craftMissionTime;
+    private long craftMissionTime;
 
-    public long escapeMission;
+    private long escapeMission;
+
+    private long coolTime;
 
 
     /*public TosoConfig(LocationData waitingLocation) {
@@ -54,7 +56,7 @@ public class TosoConfig {
 
     public TosoConfig(LocationData waitingLocation, LocationData prisonLocation, LocationData openingGameLocation,
                       LocationData goalLocation, Set<LocationData> explosionHunterBoxes, Set<LocationData> coreLocations, LocationData goalAreaPosOne, LocationData goalAreaPosTwo,
-                      long gameTime, long blockTime, long breakTime, long craftTime, long escapeTime) {
+                      long gameTime, long blockTime, long breakTime, long craftTime, long escapeTime, long coolTime) {
 
         this.waitingLocation = waitingLocation;
         this.prisonLocation = prisonLocation;
@@ -68,6 +70,7 @@ public class TosoConfig {
         this.breakMissionTime = gameTime - breakTime;
         this.craftMissionTime = gameTime - craftTime;
         this.escapeMission = gameTime - escapeTime;
+        this.coolTime = coolTime;
     }
 
     public void setCoreLocations(LocationData coreLocations) {
