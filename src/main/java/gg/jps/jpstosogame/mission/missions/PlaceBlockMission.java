@@ -16,7 +16,7 @@ public class PlaceBlockMission extends Mission {
     private final TosoGame game;
 
     public PlaceBlockMission(TosoGame game) {
-        super("&e第一ミッション: 捕まった仲間を救出せよ", Sound.ITEM_GOAT_HORN_SOUND_4);
+        super("&e第1ミッション: 捕まった仲間を救出せよ", Sound.ITEM_GOAT_HORN_SOUND_4);
         this.game = game;
     }
 
