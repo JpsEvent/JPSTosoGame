@@ -46,6 +46,7 @@ public class InGameHandler extends Handler {
         title("&5逃走中スタート", "");
         sound(Sound.ENTITY_WITHER_SPAWN);
         getGame().getTosoTime().start();
+        game.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
     }
 
     @Override
@@ -91,10 +92,13 @@ public class InGameHandler extends Handler {
     }
 
     private void goal(Player player) {
+        if (escapedPlayers.contains(player.getUniqueId())) return;
+
         broadcast(String.format("%sが脱出に成功しました。", player.getName()));
         sound(Sound.UI_TOAST_CHALLENGE_COMPLETE);
         player.teleport(game.getConfig().getGoalLocation().getLocation());
         player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
+        escapedPlayers.add(player.getUniqueId());
     }
 
     @EventHandler
@@ -143,6 +147,8 @@ public class InGameHandler extends Handler {
             if (game.isSpectator(player.getPlayer())) return;
             if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) {
                 player.freeze();
+            } else {
+                game.teleportPrisonLocation(player);
             }
             if (game.isHunter(player.getPlayer())) {
                 player.freeze();
