@@ -3,6 +3,7 @@ package gg.jps.jpstosogame.mission.missions;
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.mission.Mission;
+import gg.jps.jpstosogame.player.GamePlayer;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -34,11 +35,11 @@ public class CraftMission extends Mission {
         if (JpsTosoGame.getInstance().getGame().isEmpty()) return;
         final TosoGame game = JpsTosoGame.getInstance().getGame().get();
 
-        game.getEscapePlayers().forEach(uuid -> JpsTosoGame.getInstance().getPlayer(uuid).ifPresent(gamePlayer -> {
-            gamePlayer.freeze();
-            if (gamePlayer.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) return;
-            game.teleportPrisonLocation(gamePlayer);
-        }));
+        game.getPlayers(GamePlayer.class).forEach(player -> {
+            player.freeze();
+            if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) return;
+            game.teleportPrisonLocation(player);
+        });
     }
 
     public void giveWoolRandomPlayer(Player player) {
