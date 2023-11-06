@@ -29,7 +29,7 @@ public class MissionManager {
     }
 
     private void onFailedAfter(Mission mission, long after) {
-        onFailedAfter(mission, after, TimeUnit.MINUTES);
+        onFailedAfter(mission, after, TimeUnit.SECONDS);
     }
 
     private void onFailedAfter(Mission mission, long after, TimeUnit unit) {
