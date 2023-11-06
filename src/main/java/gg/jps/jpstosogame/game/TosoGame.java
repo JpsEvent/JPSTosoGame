@@ -27,6 +27,8 @@ public class TosoGame extends Game {
 
     private final TosoTime tosoTime;
 
+    private final TosoEscapeTime tosoEscapeTime;
+
     private final MissionManager missionManager;
 
     private final WaitingHandler waitingHandler = new WaitingHandler(this);
@@ -45,6 +47,7 @@ public class TosoGame extends Game {
         super(JpsTosoGame.getInstance());
         this.config = config;
         this.tosoTime = new TosoTime(this);
+        this.tosoEscapeTime = new TosoEscapeTime(this);
         this.missionManager = new MissionManager(this);
         this.goalArea = new Cuboid(config.getGoalArea().getPos1().getLocation(), config.getGoalArea().getPos2().getLocation());
         this.prisonArea = new Cuboid(config.getPrisonArea().getPos1().getLocation(), config.getPrisonArea().getPos2().getLocation());
@@ -63,6 +66,7 @@ public class TosoGame extends Game {
     public void stopGame() {
         getBossBar().hide();
         tosoTime.cancel();
+        tosoEscapeTime.cancel();
     }
 
     public void addHunter(GamePlayer player) {

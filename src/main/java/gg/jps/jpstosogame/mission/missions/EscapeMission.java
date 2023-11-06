@@ -7,6 +7,8 @@ import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.concurrent.TimeUnit;
+
 public class EscapeMission extends Mission {
 
     public EscapeMission() {
@@ -16,7 +18,11 @@ public class EscapeMission extends Mission {
 
     @Override
     public void start() {
-        JpsTosoGame.getInstance().getGame().ifPresent(tosoGame -> tosoGame.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze));
+        JpsTosoGame.getInstance().getGame().ifPresent(tosoGame -> {
+            tosoGame.getTosoEscapeTime().start();
+            tosoGame.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
+            JpsTosoGame.getInstance().syncScheduler().after(tosoGame.getConfig().getFlyTime()).run(tosoGame::creativeMode);
+        });
     }
 
     @EventHandler
@@ -30,5 +36,10 @@ public class EscapeMission extends Mission {
                 tosoGame.teleportGoalLocation(player);
             }
         });
+    }
+
+    @Override
+    public void onFailed() {
+
     }
 }

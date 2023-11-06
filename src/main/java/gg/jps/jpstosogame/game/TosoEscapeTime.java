@@ -8,43 +8,29 @@ import pakira.scheduler.Scheduler;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class TosoTime {
+public class TosoEscapeTime {
 
     private final TosoGame game;
     private final Scheduler scheduler;
 
     private final AtomicLong timer = new AtomicLong();
 
-    public TosoTime(TosoGame game) {
+    public TosoEscapeTime(TosoGame game) {
         this.game = game;
         scheduler = new Scheduler(JpsTosoGame.getInstance(), false);
     }
 
     public void start() {
         scheduler.every(1, TimeUnit.SECONDS).run(() -> {
-            final long gameTime = game.getConfig().getGameTime();
-            final long timeLeft = (gameTime - timer.getAndIncrement());
+            final long finishTime = game.getConfig().getFinishTime();
+            final long timeLeft = (finishTime - timer.getAndIncrement());
             final String formattedTimeLeft = TimeFormat.format((int) timeLeft);
 
-            // 割愛
-            if (timeLeft == game.getConfig().getPlaceBlockMissionTime()) {
-                game.getMissionManager().startPlaceBlockMission();
-            }
-
-            if (timeLeft == game.getConfig().getBreakMissionTime()) {
-                game.getMissionManager().startBreakMission();
-            }
-
-            if (timeLeft == game.getConfig().getCraftMissionTime()) {
-                game.getMissionManager().startCraftMission();
-            }
-
-
             if (timeLeft == 0) {
-                game.getInGameHandler().freeze();
                 game.getBossBar().hide();
                 game.title("&dゲーム終了", "");
                 game.sound(Sound.ENTITY_ENDER_DRAGON_DEATH);
+                game.nextHandler();
                 scheduler.cancel();
                 return;
             }
