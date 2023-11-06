@@ -42,6 +42,7 @@ public class EventListener implements Listener {
     @EventHandler
     private void on(BlockBreakEvent event) {
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+        if (event.getBlock().getType() == Material.OBSIDIAN) return;
         event.setCancelled(true);
     }
 
