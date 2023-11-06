@@ -9,6 +9,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -81,6 +82,17 @@ public class InGameHandler extends Handler {
     }
 
     @EventHandler
+    private void onDamage(EntityDamageByEntityEvent event) {
+        if (event.getDamager() instanceof Player player) {
+            if (event.getEntity() instanceof Player) {
+                if (game.isHunter(player) && player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                    event.setDamage(100);
+                }
+            }
+        }
+    }
+
+    @EventHandler
     private void onTeamChat(AsyncPlayerChatEvent event) {
 
         event.setCancelled(true);
@@ -113,9 +125,12 @@ public class InGameHandler extends Handler {
     public void freeze() {
         game.getPlayers(GamePlayer.class).forEach(player -> {
             if (game.isSpectator(player.getPlayer())) return;
-            if (!player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) return;
-
-            player.freeze();
+            if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) {
+                player.freeze();
+            }
+            if (game.isHunter(player.getPlayer())) {
+                player.freeze();
+            }
         });
     }
 
