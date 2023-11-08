@@ -65,8 +65,6 @@ public class GamePlayer extends OnlinePlayer {
 
         inventory.setArmorContents(ARMOR_CONTENTS);
         inventory.addItem(ItemBuilder.of(Material.NETHERITE_SWORD).build());
-        inventory.addItem(ItemBuilder.of(Material.NETHERITE_PICKAXE).build());
-        inventory.addItem(ItemBuilder.of(Material.RED_CONCRETE).build());
     }
 
     public boolean isFreeze() {
