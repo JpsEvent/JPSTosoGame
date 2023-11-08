@@ -63,10 +63,26 @@ public class TosoGame extends Game {
         };
     }
 
+    public void setEscapePlayers() {
+        getPlayers().forEach(player -> {
+            if (isHunter(player.getPlayer())) return;
+
+            escapePlayers.add(player.getUniqueId());
+        });
+    }
+
     public void stopGame() {
         getBossBar().hide();
         tosoTime.cancel();
         tosoEscapeTime.cancel();
+        inGameHandler.reset();
+        escapePlayers.clear();
+        hunterPlayers.clear();
+    }
+
+    public void addEscape(GamePlayer player) {
+        if (isHunter(player.getPlayer())) return;
+        escapePlayers.add(player.getUniqueId());
     }
 
     public void addHunter(GamePlayer player) {

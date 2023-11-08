@@ -36,10 +36,11 @@ public class CraftMission extends Mission {
         final TosoGame game = JpsTosoGame.getInstance().getGame().get();
 
         game.getPlayers(GamePlayer.class).forEach(player -> {
-            player.freeze();
+            if (game.isHunter(player.getPlayer())) return;
             if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) return;
             game.teleportPrisonLocation(player);
         });
+        game.getInGameHandler().freeze();
     }
 
     public void giveWoolRandomPlayer(Player player) {

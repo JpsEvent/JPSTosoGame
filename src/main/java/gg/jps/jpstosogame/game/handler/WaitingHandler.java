@@ -52,8 +52,14 @@ public class WaitingHandler extends Handler {
         if (clickedBlock == null || event.getHand() != EquipmentSlot.HAND) return;
 
         switch (clickedBlock.getType()) {
-            case EMERALD_BLOCK -> getGame().teleportOpeningGameLocation(player);
-            case REDSTONE_BLOCK -> getGame().teleportPrisonLocation(player);
+            case EMERALD_BLOCK -> {
+                getGame().addEscape(player);
+                getGame().teleportOpeningGameLocation(player);
+            }
+            case REDSTONE_BLOCK -> {
+                getGame().addEscape(player);
+                getGame().teleportPrisonLocation(player);
+            }
             case DIAMOND_BLOCK -> randomHunterChoose(player);
         }
     }

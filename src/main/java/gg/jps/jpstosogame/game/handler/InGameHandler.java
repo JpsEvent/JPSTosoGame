@@ -4,10 +4,8 @@ import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.game.TosoConfig;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
+import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -46,6 +44,7 @@ public class InGameHandler extends Handler {
         title("&5逃走中スタート", "");
         sound(Sound.ENTITY_WITHER_SPAWN);
         getGame().getTosoTime().start();
+        game.setEscapePlayers();
         game.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
     }
 
@@ -130,6 +129,19 @@ public class InGameHandler extends Handler {
     }
 
     @EventHandler
+    private void onBlockClick(PlayerInteractEvent event) {
+        final Block clickedBlock = event.getClickedBlock();
+        final GamePlayer player = JpsTosoGame.getInstance().getPlayer(event.getPlayer());
+
+        if (clickedBlock == null || event.getHand() != EquipmentSlot.HAND) return;
+
+        if (clickedBlock.getType() == Material.REDSTONE_BLOCK) {
+            getGame().teleportPrisonLocation(player);
+            getGame().addEscape(player);
+        }
+    }
+
+    @EventHandler
     public void on(PlayerDeathEvent event) {
         final Player player = event.getPlayer();
         if (getGame().isHunter(event.getEntity())) return;
@@ -146,15 +158,9 @@ public class InGameHandler extends Handler {
         game.getPlayers(GamePlayer.class).forEach(player -> {
             if (game.isSpectator(player.getPlayer())) return;
             if (player.getPlayer().isOp()) return;
-            if (game.isInPrisonArea(player.getPlayer())) return;
-            if (player.getPlayer().getInventory().contains(Material.TRIPWIRE_HOOK)) {
-                player.freeze();
-            } else {
-                game.teleportPrisonLocation(player);
-            }
-            if (game.isHunter(player.getPlayer())) {
-                player.freeze();
-            }
+            if (player.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+            if (player.getPlayer().getGameMode() == GameMode.SPECTATOR) return;
+            player.freeze();
         });
     }
 
