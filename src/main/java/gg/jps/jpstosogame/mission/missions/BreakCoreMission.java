@@ -31,7 +31,7 @@ public class BreakCoreMission extends Mission {
 
         game.sound(Sound.ITEM_GOAT_HORN_SOUND_5);
         game.title("&c【ミッション】ハンター強化ミッション終了",  "");
-        game.title( "&c ハンターに俊足能力が付与されました。", "");
+        game.title( "&cハンターに俊足能力が付与されました。", "");
 
         strongHunters();
     }

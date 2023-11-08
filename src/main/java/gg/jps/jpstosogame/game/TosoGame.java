@@ -123,7 +123,7 @@ public class TosoGame extends Game {
                 final Player p = Bukkit.getPlayer(uuid);
                 if (p == null) return;
 
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("%s[ハンター] %s&r: &7%s", player.getUsername(), message)));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("[ハンター] %s&r: &7%s", player.getUsername(), message)));
             });
             return;
         }
@@ -133,7 +133,7 @@ public class TosoGame extends Game {
                 final Player p = Bukkit.getPlayer(uuid);
                 if (p == null) return;
 
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("%s[逃走者] %s&r: &7%s", player.getUsername(), message)));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("[逃走者] %s&r: &7%s", player.getUsername(), message)));
             });
         }
     }
