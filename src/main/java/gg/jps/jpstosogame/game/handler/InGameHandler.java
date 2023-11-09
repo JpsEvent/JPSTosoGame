@@ -103,7 +103,11 @@ public class InGameHandler extends Handler {
     @EventHandler
     private void onDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player player) {
-            if (event.getEntity() instanceof Player) {
+            if (event.getEntity() instanceof Player vitim) {
+                if (game.isHunter(vitim) && game.isHunter(player)) {
+                    event.setCancelled(true);
+                    return;
+                }
                 if (game.isHunter(player) && player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
                     event.setDamage(100);
                 }
