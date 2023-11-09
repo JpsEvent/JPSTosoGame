@@ -42,8 +42,6 @@ public class GamePlayer extends OnlinePlayer {
         if (player.getAllowFlight()) {
             player.setFlying(true);
         }
-        player.setWalkSpeed(0F);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE,237));
         isFreeze = true;
     }
 
@@ -51,8 +49,6 @@ public class GamePlayer extends OnlinePlayer {
         if (player.getAllowFlight()) {
             player.setFlying(false);
         }
-        player.setWalkSpeed(0.2F);
-        player.removePotionEffect(PotionEffectType.JUMP);
         isFreeze = false;
     }
 
