@@ -104,14 +104,14 @@ public class InGameHandler extends Handler {
     private void onDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player player) {
             if (event.getEntity() instanceof Player vitim) {
-                if (game.isHunter(vitim) && game.isHunter(player) ||
-                        !(game.isHunter(vitim) && game.isHunter(player))) {
-                    event.setCancelled(true);
+                if (game.isHunter(player) != game.isHunter(vitim)) {
+                    if (game.isHunter(player) && player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+                        event.setDamage(100);
+                        return;
+                    }
                     return;
                 }
-                if (game.isHunter(player) && player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
-                    event.setDamage(100);
-                }
+                event.setCancelled(true);
             }
         }
     }
@@ -157,16 +157,6 @@ public class InGameHandler extends Handler {
 
         addKill(player.getKiller());
         player.getWorld().strikeLightningEffect(player.getLocation());
-    }
-
-    public void freeze() {
-        game.getPlayers(GamePlayer.class).forEach(player -> {
-            if (game.isSpectator(player.getPlayer())) return;
-            if (player.getPlayer().isOp()) return;
-            if (player.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-            if (player.getPlayer().getGameMode() == GameMode.SPECTATOR) return;
-            player.freeze();
-        });
     }
 
     private void respawn(Player player) {
