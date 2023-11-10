@@ -80,8 +80,7 @@ public final class JpsTosoGame extends JavaPlugin {
             // generate config.yml, if not exist config.yml
             final LocationData locationData = LocationData.at(Bukkit.getWorlds().get(0).getSpawnLocation());
             try {
-                final TosoConfig config = new TosoConfig(locationData, locationData, locationData, locationData, Set.of(locationData),
-                        Set.of(locationData), locationData, locationData, new CuboidData(locationData, locationData), 300, 60, 120, 180, 240, 60, 20, 12, 60, 30);
+                final TosoConfig config = new TosoConfig(locationData);
                 JsonUtil.saveJsonFile(new File(getDataFolder(), "config.json"), config);
                 loadGame();
             } catch (IOException e) {

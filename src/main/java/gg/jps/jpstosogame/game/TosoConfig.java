@@ -2,7 +2,6 @@ package gg.jps.jpstosogame.game;
 
 import gg.jps.jpstosogame.data.CuboidData;
 import gg.jps.jpstosogame.data.LocationData;
-import gg.jps.jpstosogame.util.Cuboid;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 @Setter
 public class TosoConfig {
 
-    private LocationData waitingLocation;
+    private final LocationData waitingLocation;
 
     private LocationData prisonLocation;
 
@@ -21,36 +20,32 @@ public class TosoConfig {
 
     private LocationData goalLocation;
 
-    private CuboidData goalArea;
+    private final CuboidData goalArea;
 
-    private CuboidData prisonArea;
+    private final CuboidData prisonArea;
 
-    private Set<LocationData> explosionHunterBoxes;
+    private final Set<LocationData> explosionHunterBoxes;
 
-    private Set<LocationData> coreLocations;
+    private final Set<LocationData> coreLocations;
 
-    private long gameTime;
+    private final long gameTime;
 
-    private long placeBlockMissionTime;
+    private final long placeBlockMissionTime;
 
-    private long breakMissionTime;
+    private final long breakMissionTime;
 
-    private long craftMissionTime;
+    private final long craftMissionTime;
 
-    private long escapeMission;
+    private final long coolTime;
 
-    private long coolTime;
+    private final long breakFailedTime;
 
-    private long breakFailedTime;
+    private final long finishTime;
 
-    private long craftFailedTime;
-
-    private long finishTime;
-
-    private long flyTime;
+    private final long flyTime;
 
 
-    /*public TosoConfig(LocationData waitingLocation) {
+    public TosoConfig(LocationData waitingLocation) {
         this.waitingLocation = waitingLocation;
         this.prisonLocation = waitingLocation;
         this.openingGameLocation = waitingLocation;
@@ -58,17 +53,21 @@ public class TosoConfig {
         this.explosionHunterBoxes = new HashSet<>();
         this.coreLocations = new HashSet<>();
         this.goalArea = new CuboidData(waitingLocation, waitingLocation);
-        this.gameTime = 40 * 60;
-        this.placeBlockMissionTime = gameTime - (10 * 60);
-        this.breakMissionTime = gameTime - (15 * 60);
-        this.craftMissionTime = gameTime - (20 * 60);
-        this.escapeMission = gameTime - (25 * 60);
-    }*/
+        this.prisonArea = new CuboidData(waitingLocation, waitingLocation);
+        this.gameTime = 60;
+        this.placeBlockMissionTime = 50;
+        this.breakMissionTime = 40;
+        this.craftMissionTime = 30;
+        this.coolTime = 10;
+        this.breakFailedTime = 10;
+        this.finishTime = 30;
+        this.flyTime = 10;
+    }
 
     public TosoConfig(LocationData waitingLocation, LocationData prisonLocation, LocationData openingGameLocation,
                       LocationData goalLocation, Set<LocationData> explosionHunterBoxes, Set<LocationData> coreLocations, LocationData goalAreaPosOne, LocationData goalAreaPosTwo,
                       CuboidData prisonArea, long gameTime, long blockTime, long breakTime, long craftTime,
-                      long escapeTime, long coolTime, long breakFailedTime, long craftFailedTime, long finishTime, long flyTime) {
+                      long coolTime, long breakFailedTime, long finishTime, long flyTime) {
 
         this.waitingLocation = waitingLocation;
         this.prisonLocation = prisonLocation;
@@ -82,10 +81,8 @@ public class TosoConfig {
         this.placeBlockMissionTime = gameTime - blockTime;
         this.breakMissionTime = gameTime - breakTime;
         this.craftMissionTime = gameTime - craftTime;
-        this.escapeMission = gameTime - escapeTime;
         this.coolTime = coolTime;
         this.breakFailedTime = breakFailedTime;
-        this.craftFailedTime = craftFailedTime;
         this.finishTime = finishTime;
         this.flyTime = flyTime;
     }
