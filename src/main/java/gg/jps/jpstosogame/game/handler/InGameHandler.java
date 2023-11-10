@@ -104,7 +104,8 @@ public class InGameHandler extends Handler {
     private void onDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player player) {
             if (event.getEntity() instanceof Player vitim) {
-                if (game.isHunter(vitim) && game.isHunter(player)) {
+                if (game.isHunter(vitim) && game.isHunter(player) ||
+                        !(game.isHunter(vitim) && game.isHunter(player))) {
                     event.setCancelled(true);
                     return;
                 }
