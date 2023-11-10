@@ -72,6 +72,8 @@ public class WaitingHandler extends Handler {
 
         // 3秒後に実行
         JpsTosoGame.getInstance().syncScheduler().after(3, TimeUnit.SECONDS).run(() -> {
+            // 始まっていたら抽選をしない
+            if (getGame().getCurrentHandler() instanceof InGameHandler) return;
             if (isOut()) {
                 getGame().broadcast("&cアウト");
                 sound(Sound.ENTITY_WITHER_SPAWN);
