@@ -41,7 +41,7 @@ public class TosoTime {
 
 
             if (timeLeft == 0) {
-                game.getInGameHandler().freeze();
+                game.getMissionManager().getCraftMission().onFailed();
                 game.getBossBar().hide();
                 game.title("&dゲーム終了", "");
                 game.sound(Sound.ENTITY_ENDER_DRAGON_DEATH);

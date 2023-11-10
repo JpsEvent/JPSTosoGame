@@ -6,9 +6,11 @@ import gg.jps.jpstosogame.mission.missions.BreakCoreMission;
 import gg.jps.jpstosogame.mission.missions.CraftMission;
 import gg.jps.jpstosogame.mission.missions.EscapeMission;
 import gg.jps.jpstosogame.mission.missions.PlaceBlockMission;
+import lombok.Getter;
 
 import java.util.concurrent.TimeUnit;
 
+@Getter
 public class MissionManager {
 
     private final TosoGame game;
