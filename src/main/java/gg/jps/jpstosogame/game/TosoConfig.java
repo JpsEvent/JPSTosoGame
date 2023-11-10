@@ -5,7 +5,9 @@ import gg.jps.jpstosogame.data.LocationData;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Getter
@@ -50,8 +52,8 @@ public class TosoConfig {
         this.prisonLocation = waitingLocation;
         this.openingGameLocation = waitingLocation;
         this.goalLocation = waitingLocation;
-        this.explosionHunterBoxes = new HashSet<>();
-        this.coreLocations = new HashSet<>();
+        this.explosionHunterBoxes = Set.of(waitingLocation);
+        this.coreLocations = Set.of(waitingLocation);
         this.goalArea = new CuboidData(waitingLocation, waitingLocation);
         this.prisonArea = new CuboidData(waitingLocation, waitingLocation);
         this.gameTime = 60;
