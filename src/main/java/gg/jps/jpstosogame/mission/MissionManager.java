@@ -53,7 +53,7 @@ public class MissionManager {
     public void startCraftMission() {
         craftMission.start();
         announce(craftMission);
-        onFailedAfter(breakCoreMission, game.getConfig().getCraftFailedTime());
+        //onFailedAfter(breakCoreMission, game.getConfig().getCraftFailedTime());
     }
     public void startEscapeMission() {
         escapeMission.start();
