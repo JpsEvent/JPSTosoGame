@@ -65,6 +65,12 @@ public final class JpsTosoGame extends JavaPlugin {
 
         if (game != null) {
             game.stopGame();
+
+            try {
+                JsonUtil.saveJsonFile(new File(getDataFolder(), "config.json"), game.getConfig());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         leaveGameOnlinePlayers();

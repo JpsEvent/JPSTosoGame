@@ -30,7 +30,13 @@ public class SetCommand extends BaseCommand {
                 case SET_GOAL_LOCATION -> config.setGoalLocation(locationData);
             }
 
-            player.sendMessage(option.name().toLowerCase(Locale.ROOT) + "を設定しました");
+            player.sendMessage(String.format(option.name().toLowerCase(Locale.ROOT) + "を%sに設定しました",
+                    String.format("x: %s y: %s z: %s",
+                            locationData.getX(),
+                            locationData.getY(),
+                            locationData.getZ()
+                    ))
+            );
         });
     }
 
