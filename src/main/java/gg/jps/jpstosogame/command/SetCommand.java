@@ -40,6 +40,19 @@ public class SetCommand extends BaseCommand {
         });
     }
 
+    @Subcommand("set lottery")
+    @CommandPermission("toso.set.lottery")
+    public void on(Player player, int lottery) {
+        JpsTosoGame.getInstance().getGame().ifPresent(game -> {
+            final TosoConfig config = game.getConfig();
+
+            config.setLottery(lottery);
+
+            player.sendMessage(String.format("lotteryを%sに設定しました", lottery)
+            );
+        });
+    }
+
     @Subcommand("reload")
     @CommandPermission("toso.reload")
     public void on(Player player) {
