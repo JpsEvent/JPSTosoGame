@@ -32,6 +32,7 @@ public class TosoTime {
             }
 
             if (timeLeft == game.getConfig().getBreakMissionTime()) {
+                game.getMissionManager().getBreakCoreMission().placeObsidianLocations();
                 game.getMissionManager().startBreakMission();
             }
 
