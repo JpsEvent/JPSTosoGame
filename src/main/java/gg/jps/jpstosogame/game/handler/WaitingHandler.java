@@ -22,6 +22,8 @@ public class WaitingHandler extends Handler {
 
     private final TosoGame game;
 
+    private boolean isLottery;
+
     public WaitingHandler(TosoGame game) {
         super(game);
         this.game = game;
@@ -70,6 +72,8 @@ public class WaitingHandler extends Handler {
 
         broadcast(String.format("%s 抽選中・・・", player.getUsername()));
 
+        if (isLottery) return;
+        isLottery = true;
         // 3秒後に実行
         JpsTosoGame.getInstance().syncScheduler().after(3, TimeUnit.SECONDS).run(() -> {
             // 始まっていたら抽選をしない
@@ -84,6 +88,7 @@ public class WaitingHandler extends Handler {
             }
             // セーフな場合
             broadcast("&bセーフ");
+            isLottery = false;
         });
     }
 
