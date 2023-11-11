@@ -202,3 +202,16 @@ https://www.youtube.com/live/17wE4YJJrD8?si=2CsLjB_RoxR9HNWc&t=3992
 
 https://www.spigotmc.org/resources/villager-market-the-ultimate-shop-plugin.82965/
 - [ ] 経験値に所持JPを表示
+
+
+# configについて
+gameTime:　ゲーム全体の秒数
+placeBlockMissionTime:　第1ミッション開始経過秒数
+breakMissionTime:　第2ミッション開始経過秒数
+craftMissionTime:　第3ミッション開始経過秒数
+escapeMission: これ無視で大丈夫です。
+coolTime: 抽選？のクールダウンタイムです。
+breakFailedTime: breakMissionがスタートしてから設定した経過時間後にミッション失敗させるかを設定できる
+craftFailedTime: 上記同様
+finishTime:　最終ミッションの秒数
+flyTime: 最終ミッションスタートしてから設定した経過時間後に飛行可能とする。
