@@ -99,6 +99,6 @@ public class WaitingHandler extends Handler {
     }
 
     private boolean isOut() {
-        return Math.random() < 0.1;
+        return Math.random() < ((double) game.getConfig().getLottery() / 100);
     }
 }

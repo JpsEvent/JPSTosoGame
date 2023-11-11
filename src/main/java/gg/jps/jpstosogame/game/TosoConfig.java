@@ -44,6 +44,8 @@ public class TosoConfig {
 
     private final long flyTime;
 
+    private final int lottery;
+
 
     public TosoConfig(LocationData waitingLocation) {
         this.waitingLocation = waitingLocation;
@@ -62,12 +64,13 @@ public class TosoConfig {
         this.breakFailedTime = 10;
         this.finishTime = 30;
         this.flyTime = 10;
+        this.lottery = 10;
     }
 
     public TosoConfig(LocationData waitingLocation, LocationData prisonLocation, LocationData openingGameLocation,
                       LocationData goalLocation, Set<LocationData> explosionHunterBoxes, Set<LocationData> coreLocations, LocationData goalAreaPosOne, LocationData goalAreaPosTwo,
                       CuboidData prisonArea, long gameTime, long blockTime, long breakTime, long craftTime,
-                      long coolTime, long breakFailedTime, long finishTime, long flyTime) {
+                      long coolTime, long breakFailedTime, long finishTime, long flyTime, int lottery) {
 
         this.waitingLocation = waitingLocation;
         this.prisonLocation = prisonLocation;
@@ -85,6 +88,7 @@ public class TosoConfig {
         this.breakFailedTime = breakFailedTime;
         this.finishTime = finishTime;
         this.flyTime = flyTime;
+        this.lottery = lottery;
     }
 
     public void setCoreLocations(LocationData coreLocations) {
