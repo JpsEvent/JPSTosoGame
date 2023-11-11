@@ -28,8 +28,8 @@ public class BreakCoreMission extends Mission {
 
     public void onFailed() {
         if (isAllBreakCore()) {
-            game.title("&c【ミッション】ハンター強化ミッション終了",  "");
             game.broadcast("&eミッション成功");
+            game.title("&c【ミッション】ハンター強化ミッション終了",  "");
             return;
         }
 
@@ -68,14 +68,13 @@ public class BreakCoreMission extends Mission {
     private boolean isAllBreakCore() {
         for (LocationData locationData : game.getConfig().getCoreLocations()) {
             final Location location = locationData.getLocation();
-
             if (location.getBlock() == null) continue;
             final Block block = location.getBlock();
             if (block.getType() == Material.OBSIDIAN) {
-                return true;
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 }

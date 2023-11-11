@@ -67,14 +67,10 @@ public class WaitingHandler extends Handler {
     }
 
     private void randomHunterChoose(GamePlayer player) {
-        if (player.getPlayer().getCooldown(Material.AIR) != 0) return;
-        player.getPlayer().setCooldown(Material.AIR, Math.toIntExact(game.getConfig().getCoolTime()));
-
-        broadcast(String.format("%s 抽選中・・・", player.getUsername()));
-
         if (isLottery) return;
         isLottery = true;
         // 3秒後に実行
+        broadcast(String.format("%s 抽選中・・・", player.getUsername()));
         JpsTosoGame.getInstance().syncScheduler().after(3, TimeUnit.SECONDS).run(() -> {
             // 始まっていたら抽選をしない
             if (getGame().getCurrentHandler() instanceof InGameHandler) return;
