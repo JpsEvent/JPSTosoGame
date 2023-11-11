@@ -205,13 +205,12 @@ https://www.spigotmc.org/resources/villager-market-the-ultimate-shop-plugin.8296
 
 
 # configについて
-gameTime:　ゲーム全体の秒数
-placeBlockMissionTime:　第1ミッション開始経過秒数
-breakMissionTime:　第2ミッション開始経過秒数
-craftMissionTime:　第3ミッション開始経過秒数
-escapeMission: これ無視で大丈夫です。
-coolTime: 抽選？のクールダウンタイムです。
-breakFailedTime: breakMissionがスタートしてから設定した経過時間後にミッション失敗させるかを設定できる
-craftFailedTime: 上記同様
-finishTime:　最終ミッションの秒数
-flyTime: 最終ミッションスタートしてから設定した経過時間後に飛行可能とする。
+- gameTime:　ゲーム全体の秒数
+- placeBlockMissionTime:　第1ミッション開始経過秒数
+- breakMissionTime:　第2ミッション開始経過秒数
+- craftMissionTime:　第3ミッション開始経過秒数
+- breakFailedTime: breakMissionがスタートしてから設定した経過時間後にミッション失敗させるかを設定できる
+- coolTime: 抽選？のクールダウンタイムです。
+- craftFailedTime: 上記同様
+- finishTime:　最終ミッションの秒数
+- flyTime: 最終ミッションスタートしてから設定した経過時間後に飛行可能とする。
