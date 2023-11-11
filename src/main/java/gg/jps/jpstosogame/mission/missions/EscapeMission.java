@@ -21,7 +21,7 @@ public class EscapeMission extends Mission {
         JpsTosoGame.getInstance().getGame().ifPresent(tosoGame -> {
             tosoGame.getTosoEscapeTime().start();
             tosoGame.getPlayers(GamePlayer.class).forEach(GamePlayer::unFreeze);
-            JpsTosoGame.getInstance().syncScheduler().after(tosoGame.getConfig().getFlyTime()).run(tosoGame::creativeMode);
+            JpsTosoGame.getInstance().syncScheduler().after(tosoGame.getConfig().getFlyTime(), TimeUnit.SECONDS).run(tosoGame::creativeMode);
         });
     }
 
