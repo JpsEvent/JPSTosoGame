@@ -27,7 +27,11 @@ public class BreakCoreMission extends Mission {
     }
 
     public void onFailed() {
-        if (isAllBreakCore()) return;
+        if (isAllBreakCore()) {
+            game.title("&c【ミッション】ハンター強化ミッション終了",  "");
+            game.broadcast("&eミッション成功");
+            return;
+        }
 
         game.sound(Sound.ITEM_GOAT_HORN_SOUND_5);
         game.title("&c【ミッション】ハンター強化ミッション終了",  "");
