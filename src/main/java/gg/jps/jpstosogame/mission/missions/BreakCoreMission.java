@@ -50,8 +50,8 @@ public class BreakCoreMission extends Mission {
         brokenBlock.getWorld().spawnEntity(brokenBlock.getLocation(), EntityType.FIREWORK);
 
         if (isAllBreakCore()) {
-            game.sound(Sound.ITEM_GOAT_HORN_SOUND_1);
-            game.broadcast("&b%sが最後のコアを破壊しました。");
+            game.sound(Sound.ENTITY_ENDER_DRAGON_AMBIENT);
+            game.broadcast("&b%sがコアの破壊に成功しました。");
             game.title("&b第2ミッションクリア", "");
 
             return;
