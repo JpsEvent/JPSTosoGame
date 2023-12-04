@@ -83,23 +83,14 @@ public class InGameHandler extends Handler {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     private void onMove(PlayerMoveEvent event) {
         if (game.isInGoalArea(event.getPlayer())) {
             game.getInGameHandler().goal(event.getPlayer());
         }
-    }
+    }*/
 
-    private void goal(Player player) {
-        if (game.isHunter(player)) return;
-        if (escapedPlayers.contains(player.getUniqueId())) return;
 
-        broadcast(String.format("%sが脱出に成功しました。", player.getName()));
-        sound(Sound.UI_TOAST_CHALLENGE_COMPLETE);
-        player.teleport(game.getConfig().getGoalLocation().getLocation());
-        player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
-        escapedPlayers.add(player.getUniqueId());
-    }
 
     @EventHandler
     private void onDamage(EntityDamageByEntityEvent event) {
