@@ -91,6 +91,7 @@ public class InGameHandler extends Handler {
     }
 
     private void goal(Player player) {
+        if (game.isHunter(player)) return;
         if (escapedPlayers.contains(player.getUniqueId())) return;
 
         broadcast(String.format("%sが脱出に成功しました。", player.getName()));
