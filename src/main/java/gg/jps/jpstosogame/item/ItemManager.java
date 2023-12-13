@@ -5,6 +5,7 @@ import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.item.items.Feather;
 import gg.jps.jpstosogame.item.items.GhastTear;
 import gg.jps.jpstosogame.item.items.KnockBall;
+import gg.jps.jpstosogame.item.items.Sword;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -28,12 +29,13 @@ public class ItemManager implements Listener {
         ITEMS = ImmutableMap.of(
                 Material.FEATHER, new Feather(),
                 Material.GHAST_TEAR, new GhastTear(),
-                Material.SNOWBALL, new KnockBall()
+                Material.SNOWBALL, new KnockBall(),
+                Material.NETHERITE_SWORD, new Sword()
         );
     }
 
     @EventHandler
-    private void onClick(PlayerInteractEvent event) {
+    private void on(PlayerInteractEvent event) {
         final Action action = event.getAction();
 
         //アイテムを持った状態でのメインハンドによるクリックでなければ戻る
@@ -49,7 +51,7 @@ public class ItemManager implements Listener {
         ITEMS.forEach((mate, item) -> {
             if (material != mate) return;
 
-            item.onClick(player);
+            item.onClick(event);
         });
 
         event.setCancelled(true);

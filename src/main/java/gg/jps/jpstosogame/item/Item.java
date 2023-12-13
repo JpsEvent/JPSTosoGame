@@ -22,7 +22,7 @@ public abstract class Item {
         this.description = description;
     }
 
-    public void onClick(Player player) {
+    public void onClick(PlayerInteractEvent event) {
 
     }
 
@@ -41,8 +41,6 @@ public abstract class Item {
         inventory.setItem(heldItemSlot, decreasedAmountItem);
         player.updateInventory();
     }
-
-    @Deprecated
     public ItemStack getItem() {
         return ItemBuilder.of(material).name(name).lore(description).build();
     }

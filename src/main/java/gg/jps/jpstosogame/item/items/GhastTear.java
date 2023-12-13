@@ -3,6 +3,7 @@ package gg.jps.jpstosogame.item.items;
 import gg.jps.jpstosogame.item.Item;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -14,7 +15,8 @@ public class GhastTear extends Item {
     }
 
     @Override
-    public void onClick(Player player) {
+    public void onClick(PlayerInteractEvent event) {
+        final Player player = event.getPlayer();
         addPotionEffect(player);
         player.getNearbyEntities(2.5,2.5,2.5).forEach(entity -> {
             if (entity instanceof Player other) {
