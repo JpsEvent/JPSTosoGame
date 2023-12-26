@@ -23,7 +23,7 @@ public class Sword extends Item {
     @Override
     public void onClick(PlayerInteractEvent event) {
         final Player player = event.getPlayer();
-        final Location location = player.getLocation();
+        final Location location = player.getLocation().clone().add(rotateAroundAxisY(new Vector(1, 0,0), player.getLocation().getYaw()));
         final Action action = event.getAction();
         final ItemStack sword = event.getItem();
         assert sword != null;
@@ -52,7 +52,7 @@ public class Sword extends Item {
                 stand.getNearbyEntities(maxHitRange, maxHitRange, maxHitRange).forEach(entity -> {
                     if (entity instanceof Player victim) {
                         if (victim == player) return;
-                        if (JpsTosoGame.getInstance().getGame().get().isHunter(player)) return;
+                        if (JpsTosoGame.getInstance().getGame().get().isHunter(victim)) return;
                         victim.setHealth(0);
                         schedulerRunnable.cancel();
                         stand.remove();
@@ -64,5 +64,15 @@ public class Sword extends Item {
                 }
             });
         }
+    }
+
+    private Vector rotateAroundAxisY(Vector v, double angle) {
+        angle = -angle;
+        angle = Math.toRadians(angle);
+        double cos = Math.cos(angle),
+                sin = Math.sin(angle),
+                x = v.getX() * cos + v.getZ() * sin,
+                z = v.getX() * -sin + v.getZ() * cos;
+        return v.setX(x).setZ(z);
     }
 }
