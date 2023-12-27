@@ -1,10 +1,12 @@
 package gg.jps.jpstosogame.game.handler;
 
 import gg.jps.jpstosogame.JpsTosoGame;
-import gg.jps.jpstosogame.game.TosoConfig;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,7 +15,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import pakira.game.Handler;
@@ -72,7 +73,6 @@ public class InGameHandler extends Handler {
     @EventHandler
     private void onAxe(PlayerInteractEvent event) {
         final ItemStack item = event.getItem();
-        final GamePlayer player = JpsTosoGame.getInstance().getPlayer(event.getPlayer());
 
         if (event.getHand() != EquipmentSlot.HAND) return;
         if (item == null) return;
@@ -82,14 +82,6 @@ public class InGameHandler extends Handler {
             game.getMissionManager().startEscapeMission();
         }
     }
-
-    /*@EventHandler
-    private void onMove(PlayerMoveEvent event) {
-        if (game.isInGoalArea(event.getPlayer())) {
-            game.getInGameHandler().goal(event.getPlayer());
-        }
-    }*/
-
 
 
     @EventHandler
@@ -191,5 +183,20 @@ public class InGameHandler extends Handler {
 
             broadcast(String.format("&c%s:%d体", player, kills));
         });
+    }
+
+    public void goal(TosoGame game, Player player) {
+        if (game.isHunter(player)) return;
+        if (game.getInGameHandler().isEscaped(player)) return;
+
+        game.broadcast(String.format("%sが脱出に成功しました。", player.getName()));
+        game.sound(Sound.UI_TOAST_CHALLENGE_COMPLETE);
+        player.teleport(game.getConfig().getGoalLocation().getLocation());
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
+        escapedPlayers.add(player.getUniqueId());
+    }
+
+    private boolean isEscaped(Player player) {
+        return escapedPlayers.contains(player.getUniqueId());
     }
 }
