@@ -26,8 +26,8 @@ public class EscapeMission extends Mission {
         });
     }
 
-    @EventHandler
-    private void on(PlayerMoveEvent event) {
+    @Override
+    public void onMove(PlayerMoveEvent event) {
         final Player player = event.getPlayer();
         JpsTosoGame.getInstance().getGame().ifPresent(tosoGame -> {
             if (tosoGame.isInGoalArea(player)) {
@@ -38,7 +38,6 @@ public class EscapeMission extends Mission {
 
     @Override
     public void onFailed() {
-
         super.onFailed();
     }
 }

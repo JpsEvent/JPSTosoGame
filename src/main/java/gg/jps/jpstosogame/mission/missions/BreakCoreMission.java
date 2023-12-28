@@ -40,8 +40,8 @@ public class BreakCoreMission extends Mission {
         strongHunters();
     }
 
-    @EventHandler
-    private void on(BlockBreakEvent event) {
+    @Override
+    public void onBreak(BlockBreakEvent event) {
         final Block brokenBlock = event.getBlock();
         if (event.getPlayer().getInventory().getItemInMainHand() == null) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.DIAMOND_PICKAXE) return;

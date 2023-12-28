@@ -20,8 +20,8 @@ public class PlaceBlockMission extends Mission {
         this.game = game;
     }
 
-    @EventHandler
-    private void on(BlockPlaceEvent event) {
+    @Override
+    public void onPlace(BlockPlaceEvent event) {
         final Block placedBlock = event.getBlockPlaced();
         final Block bottomBlock = placedBlock.getRelative(BlockFace.DOWN);
 

@@ -3,6 +3,9 @@ package gg.jps.jpstosogame.mission;
 import lombok.Getter;
 import org.bukkit.Sound;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 @Getter
 public abstract class Mission implements Listener {
@@ -23,6 +26,18 @@ public abstract class Mission implements Listener {
     }
 
     public void onFailed() {
+
+    }
+
+    public void onPlace(BlockPlaceEvent event) {
+
+    }
+
+    public void onBreak(BlockBreakEvent event) {
+
+    }
+
+    public void onMove(PlayerMoveEvent event) {
 
     }
 }
