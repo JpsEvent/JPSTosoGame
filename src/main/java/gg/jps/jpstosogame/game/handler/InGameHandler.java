@@ -151,7 +151,7 @@ public class InGameHandler extends Handler {
     private void addKill(Player player) {
         final UUID uuid = player.getUniqueId();
 
-        kills.put(uuid, kills.getOrDefault(uuid,0L) + 1);
+        kills.put(uuid, kills.getOrDefault(uuid, 0L) + 1);
     }
 
     private void allPlayerGlow() {

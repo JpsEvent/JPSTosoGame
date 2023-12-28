@@ -82,11 +82,13 @@ public class MissionManager implements Listener {
         announce(craftMission);
         currentMission = craftMission;
     }
+
     public void startEscapeMission() {
         escapeMission.start();
         announce(escapeMission);
         currentMission = escapeMission;
     }
+
     public void startPlaceBlockMission() {
         placeBlockMission.start();
         announce(placeBlockMission);

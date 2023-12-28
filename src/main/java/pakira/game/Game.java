@@ -15,13 +15,10 @@ import java.util.stream.Collectors;
 
 public abstract class Game {
 
-    private int currentHandler = 0;
-
     private final Set<OnlinePlayer> players = new HashSet<>();
-
     private final GameBossBar bossBar = new GameBossBar();
-
     private final JavaPlugin plugin;
+    private int currentHandler = 0;
 
     public Game(JavaPlugin plugin) {
         this.plugin = plugin;

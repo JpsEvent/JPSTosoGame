@@ -53,7 +53,7 @@ public class CraftMission extends Mission {
     }
 
     public void giveWoolRandomPlayer(Player player) {
-        if(random.nextBoolean()) {
+        if (random.nextBoolean()) {
             player.sendMessage("赤羊毛をゲットしました。");
             player.getInventory().addItem(new ItemStack(Material.RED_WOOL));
         } else {

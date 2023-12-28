@@ -10,7 +10,6 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class BreakCoreMission extends Mission {
@@ -29,13 +28,13 @@ public class BreakCoreMission extends Mission {
     public void onFailed() {
         if (isAllBreakCore()) {
             game.broadcast("&eミッション成功");
-            game.title("&c【ミッション】ハンター強化ミッション終了",  "");
+            game.title("&c【ミッション】ハンター強化ミッション終了", "");
             return;
         }
 
         game.sound(Sound.ITEM_GOAT_HORN_SOUND_5);
-        game.title("&c【ミッション】ハンター強化ミッション終了",  "");
-        game.title( "&cハンターに俊足能力が付与されました。", "");
+        game.title("&c【ミッション】ハンター強化ミッション終了", "");
+        game.title("&cハンターに俊足能力が付与されました。", "");
 
         strongHunters();
     }

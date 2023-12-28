@@ -23,7 +23,7 @@ public class Sword extends Item {
     @Override
     public void onClick(PlayerInteractEvent event) {
         final Player player = event.getPlayer();
-        final Location location = player.getLocation().clone().add(rotateAroundAxisY(new Vector(1, 0,0), player.getLocation().getYaw()));
+        final Location location = player.getLocation().clone().add(rotateAroundAxisY(new Vector(1, 0, 0), player.getLocation().getYaw()));
         final Action action = event.getAction();
         final ItemStack sword = event.getItem();
         assert sword != null;
@@ -58,7 +58,7 @@ public class Sword extends Item {
                         stand.remove();
                     }
                 });
-                if(location.distance(stand.getLocation()) > maxRange || stand.getLocation().getBlock().getRelative(BlockFace.UP).getType().isSolid()) {
+                if (location.distance(stand.getLocation()) > maxRange || stand.getLocation().getBlock().getRelative(BlockFace.UP).getType().isSolid()) {
                     schedulerRunnable.cancel();
                     stand.remove();
                 }

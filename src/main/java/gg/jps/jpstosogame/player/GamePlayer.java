@@ -14,15 +14,13 @@ import pakira.util.ItemBuilder;
 public class GamePlayer extends OnlinePlayer {
 
     private final Player player;
-
-    private boolean isFreeze = false;
-
     private final ItemStack[] ARMOR_CONTENTS = new ItemStack[]{
             ItemBuilder.of(Material.NETHERITE_BOOTS).enchantment(Enchantment.BINDING_CURSE, 1).build(),
             ItemBuilder.of(Material.NETHERITE_LEGGINGS).enchantment(Enchantment.BINDING_CURSE, 1).build(),
             ItemBuilder.of(Material.NETHERITE_CHESTPLATE).enchantment(Enchantment.BINDING_CURSE, 1).build(),
             ItemBuilder.of(Material.NETHERITE_HELMET).enchantment(Enchantment.BINDING_CURSE, 1).build()
     };
+    private boolean isFreeze = false;
 
     public GamePlayer(Player player) {
         super(player.getUniqueId(), player.getName());
@@ -68,7 +66,7 @@ public class GamePlayer extends OnlinePlayer {
     }
 
     public void strong() {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100000,1));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100000, 1));
     }
 
     public void flyable() {

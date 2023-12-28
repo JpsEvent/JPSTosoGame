@@ -5,7 +5,6 @@ import gg.jps.jpstosogame.mission.Mission;
 import gg.jps.jpstosogame.player.GamePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.concurrent.TimeUnit;

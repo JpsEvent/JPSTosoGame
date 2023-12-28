@@ -44,9 +44,9 @@ public class Cuboid {
 
     public @NotNull ArrayList<Block> blockList() {
         final ArrayList<Block> bL = new ArrayList<>(this.getTotalBlockSize());
-        for(int x = this.xMin; x <= this.xMax; ++x) {
-            for(int y = this.yMin; y <= this.yMax; ++y) {
-                for(int z = this.zMin; z <= this.zMax; ++z) {
+        for (int x = this.xMin; x <= this.xMax; ++x) {
+            for (int y = this.yMin; y <= this.yMax; ++y) {
+                for (int z = this.zMin; z <= this.zMax; ++z) {
                     final Block b = this.world.getBlockAt(x, y, z);
                     bL.add(b);
                 }

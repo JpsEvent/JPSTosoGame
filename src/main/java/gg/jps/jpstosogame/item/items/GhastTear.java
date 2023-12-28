@@ -18,7 +18,7 @@ public class GhastTear extends Item {
     public void onClick(PlayerInteractEvent event) {
         final Player player = event.getPlayer();
         addPotionEffect(player);
-        player.getNearbyEntities(2.5,2.5,2.5).forEach(entity -> {
+        player.getNearbyEntities(2.5, 2.5, 2.5).forEach(entity -> {
             if (entity instanceof Player other) {
                 addPotionEffect(other);
             }

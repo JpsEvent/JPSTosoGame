@@ -27,7 +27,7 @@ public abstract class OnlinePlayer {
     }
 
     public final void sendMessage(Component message) {
-       getPlayer().sendMessage(message);
+        getPlayer().sendMessage(message);
     }
 
     public final void sendActionBar(String message) {

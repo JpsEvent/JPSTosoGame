@@ -8,7 +8,6 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 public class PlaceBlockMission extends Mission {
@@ -26,7 +25,7 @@ public class PlaceBlockMission extends Mission {
         final Block bottomBlock = placedBlock.getRelative(BlockFace.DOWN);
 
         if (placedBlock.getType() != Material.POLISHED_BLACKSTONE_PRESSURE_PLATE)
-        if (bottomBlock == null) return;
+            if (bottomBlock == null) return;
         if (bottomBlock.getType() != Material.POLISHED_ANDESITE) {
             event.getPlayer().sendMessage(ChatColor.RED + "牢屋前の安山岩の上に置くことができます！");
             event.setCancelled(true);

@@ -12,35 +12,20 @@ import java.util.Set;
 public class TosoConfig {
 
     private final LocationData waitingLocation;
-
-    private LocationData prisonLocation;
-
-    private LocationData openingGameLocation;
-
-    private LocationData goalLocation;
-
     private final CuboidData goalArea;
-
     private final CuboidData prisonArea;
-
     private final Set<LocationData> explosionHunterBoxes;
-
     private final Set<LocationData> coreLocations;
-
     private final long gameTime;
-
     private final long placeBlockMissionTime;
-
     private final long breakMissionTime;
-
     private final long craftMissionTime;
-
     private final long breakFailedTime;
-
     private final long finishTime;
-
     private final long flyTime;
-
+    private LocationData prisonLocation;
+    private LocationData openingGameLocation;
+    private LocationData goalLocation;
     private int lottery;
 
 
@@ -62,6 +47,7 @@ public class TosoConfig {
         this.flyTime = 10;
         this.lottery = 10;
     }
+
     public void setCoreLocations(LocationData coreLocations) {
         this.coreLocations.add(coreLocations);
     }

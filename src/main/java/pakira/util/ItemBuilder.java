@@ -127,7 +127,7 @@ public final class ItemBuilder {
     }
 
     @NotNull
-    public ItemBuilder flags(@Nullable ItemFlag @NotNull... flags) {
+    public ItemBuilder flags(@Nullable ItemFlag @NotNull ... flags) {
         if (flags.length > 0) {
             this.meta.addItemFlags(flags);
         }

@@ -2,7 +2,6 @@ package gg.jps.jpstosogame;
 
 import co.aikar.commands.PaperCommandManager;
 import gg.jps.jpstosogame.command.SetCommand;
-import gg.jps.jpstosogame.data.CuboidData;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoConfig;
 import gg.jps.jpstosogame.game.TosoGame;
@@ -11,14 +10,12 @@ import gg.jps.jpstosogame.listener.EventListener;
 import gg.jps.jpstosogame.player.GamePlayer;
 import gg.jps.jpstosogame.player.PlayerManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
-import pakira.player.OnlinePlayer;
 import pakira.scheduler.Scheduler;
 import pakira.util.ItemBuilder;
 import pakira.util.JsonUtil;
@@ -26,22 +23,18 @@ import pakira.util.JsonUtil;
 import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 public final class JpsTosoGame extends JavaPlugin {
 
     private static JpsTosoGame instance;
+    private TosoGame game;
+    private PlayerManager playerManager;
 
     public static JpsTosoGame getInstance() {
         return instance;
     }
-
-    private TosoGame game;
-
-    private PlayerManager playerManager;
 
     @Override
     public void onEnable() {

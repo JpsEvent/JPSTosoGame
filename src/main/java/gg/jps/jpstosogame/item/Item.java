@@ -2,8 +2,6 @@ package gg.jps.jpstosogame.item;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -41,6 +39,7 @@ public abstract class Item {
         inventory.setItem(heldItemSlot, decreasedAmountItem);
         player.updateInventory();
     }
+
     public ItemStack getItem() {
         return ItemBuilder.of(material).name(name).lore(description).build();
     }

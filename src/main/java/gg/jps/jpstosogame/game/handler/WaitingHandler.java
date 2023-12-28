@@ -5,7 +5,6 @@ import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.player.GamePlayer;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -94,8 +93,8 @@ public class WaitingHandler extends Handler {
 
     private void explosionHunterBoxesAndFirework() {
         getGame().getConfig().getExplosionHunterBoxes().stream().map(LocationData::getLocation).forEach(location -> {
-          location.createExplosion(1);
-          location.getWorld().spawnEntity(location, EntityType.FIREWORK);
+            location.createExplosion(1);
+            location.getWorld().spawnEntity(location, EntityType.FIREWORK);
         });
     }
 

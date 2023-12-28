@@ -57,7 +57,7 @@ public class TosoGame extends Game {
 
     @Override
     public Handler[] getHandlers() {
-        return new Handler[] {
+        return new Handler[]{
                 waitingHandler,
                 inGameHandler,
         };
