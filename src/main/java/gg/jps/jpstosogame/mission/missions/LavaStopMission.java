@@ -30,7 +30,7 @@ public class LavaStopMission extends Mission {
     }
 
     public void placeLeverLocation() {
-        game.getConfig().getLavaStopLever().getLocation().getWorld().setType(game.getConfig().getLavaLocation().getLocation(), Material.LEVER);
+        game.getConfig().getLavaStopLever().getLocation().getWorld().setType(game.getConfig().getLavaStopLever().getLocation(), Material.LEVER);
     }
 
     public void onFailed() {
