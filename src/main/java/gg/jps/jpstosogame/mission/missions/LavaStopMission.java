@@ -1,7 +1,6 @@
 package gg.jps.jpstosogame.mission.missions;
 
 import gg.jps.jpstosogame.JpsTosoGame;
-import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoGame;
 import gg.jps.jpstosogame.mission.Mission;
 import gg.jps.jpstosogame.player.GamePlayer;
@@ -21,10 +20,17 @@ public class LavaStopMission extends Mission {
         super("&e第1ミッション： マグマを止めろ", Sound.ITEM_GOAT_HORN_SOUND_4);
         this.game = game;
         this.stopLava = false;
+        placeLavaLocation();
+        placeLeverLocation();
+
     }
 
-    public void placeLavaLocations() {
-        game.getConfig().getLavaLocation().getLocation().getWorld().setType(game.getConfig().getLavaLocation().getLocation(),Material.LAVA);
+    public void placeLavaLocation() {
+        game.getConfig().getLavaLocation().getLocation().getWorld().setType(game.getConfig().getLavaLocation().getLocation(), Material.LAVA);
+    }
+
+    public void placeLeverLocation() {
+        game.getConfig().getLavaStopLever().getLocation().getWorld().setType(game.getConfig().getLavaLocation().getLocation(), Material.LEVER);
     }
 
     public void onFailed() {
@@ -48,7 +54,7 @@ public class LavaStopMission extends Mission {
         final Block clickedBlock = event.getClickedBlock();
         if (clickedBlock == null) return;
         if (clickedBlock.getType() != Material.LEVER) return;
-
+        if (this.stopLava) return;
         clickedBlock.getWorld().spawnEntity(clickedBlock.getLocation(), EntityType.FIREWORK);
 
         this.stopLava = true;
