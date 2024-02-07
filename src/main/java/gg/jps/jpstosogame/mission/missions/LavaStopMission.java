@@ -17,7 +17,7 @@ public class LavaStopMission extends Mission {
     private boolean stopLava;
 
     public LavaStopMission(TosoGame game) {
-        super("&e第1ミッション： マグマを止めろ", Sound.ITEM_GOAT_HORN_SOUND_4);
+        super("&e第1ミッション： コンガを止めろ", Sound.ITEM_GOAT_HORN_SOUND_4);
         this.game = game;
         this.stopLava = false;
     }
@@ -33,12 +33,12 @@ public class LavaStopMission extends Mission {
     public void onFailed() {
         if (stopLava) {
             game.broadcast("&eミッション成功");
-            game.title("&c【ミッション】マグマを止めろミッション終了", "");
+            game.title("&c【ミッション】コンガを止めろミッション終了", "");
             return;
         }
 
         game.sound(Sound.ITEM_GOAT_HORN_SOUND_5);
-        game.title("&c【ミッション】マグマを止めろミッション終了", "");
+        game.title("&c【ミッション】コンガを止めろミッション終了", "");
         game.title("&cハンターに俊足能力が付与されました。", "");
 
         strongHunters();
@@ -57,7 +57,7 @@ public class LavaStopMission extends Mission {
         this.stopLava = true;
 
         game.sound(Sound.ENTITY_ENDER_DRAGON_AMBIENT);
-        game.broadcast("&b%sがマグマの塞き止めに成功しました。");
+        game.broadcast(String.format("&b%sがマグマの塞き止めに成功しました。", event.getPlayer().getName()));
         game.title("&b第2ミッションクリア", "");
     }
 

@@ -19,7 +19,7 @@ public class DiamondGetMission extends Mission {
     private final TosoGame game;
 
     public DiamondGetMission(TosoGame game) {
-        super("&e第2ミッション： ダイヤモンドを受け取り、報酬をアップせよ", Sound.ITEM_GOAT_HORN_SOUND_4);
+        super("&e第2ミッション： 報酬をアップせよ", Sound.ITEM_GOAT_HORN_SOUND_4);
         this.game = game;
         placeDiamondBlockLocation();
     }
@@ -30,7 +30,7 @@ public class DiamondGetMission extends Mission {
 
     public void onFailed() {
         game.sound(Sound.ITEM_GOAT_HORN_SOUND_5);
-        game.title("&c【ミッション】ダイヤモンドを受け取り、報酬をアップせよミッション終了", "");
+        game.title("&c【ミッション】報酬をアップせよミッション終了", "");
     }
 
     @Override
@@ -46,6 +46,7 @@ public class DiamondGetMission extends Mission {
         if (game.isGetDiamond(player))return;
         clickedBlock.getWorld().spawnEntity(clickedBlock.getLocation(), EntityType.FIREWORK);
         player.getPlayer().getInventory().addItem(ItemBuilder.of(Material.DIAMOND).build());
+        game.broadcast(String.format("&b%sが第2ミッションクリアしました。", event.getPlayer().getName()));
         player.sendTitle("&b第2ミッションクリア", "");
         game.addDiamondGetPlayer(player);
     }

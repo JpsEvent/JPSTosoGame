@@ -1,6 +1,7 @@
 package pakira.util;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
 import java.io.*;
@@ -10,7 +11,7 @@ import java.util.Set;
 
 public class JsonUtil {
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static <T> Optional<T> loadFromJsonFile(File file, Class<? super T> type) {
         Validate.isTrue(file.isDirectory(), "must be a file");
