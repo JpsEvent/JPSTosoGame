@@ -102,12 +102,15 @@ public class MissionManager implements Listener {
     public void startLavaStopMission(){
         lavaStopMission.start();
         announce(lavaStopMission);
+        lavaStopMission.placeLavaLocation();
+        lavaStopMission.placeLeverLocation();
         currentMission = lavaStopMission;
     }
 
     public void startDiamondGetMission(){
         diamondGetMission.start();
         announce(diamondGetMission);
+        diamondGetMission.placeDiamondBlockLocation();
         currentMission = diamondGetMission;
     }
 

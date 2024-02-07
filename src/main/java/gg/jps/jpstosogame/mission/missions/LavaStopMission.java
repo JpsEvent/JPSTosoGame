@@ -20,9 +20,6 @@ public class LavaStopMission extends Mission {
         super("&e第1ミッション： マグマを止めろ", Sound.ITEM_GOAT_HORN_SOUND_4);
         this.game = game;
         this.stopLava = false;
-        placeLavaLocation();
-        placeLeverLocation();
-
     }
 
     public void placeLavaLocation() {
