@@ -21,7 +21,7 @@ public class BreakCoreMission extends Mission {
         this.game = game;
     }
 
-    public void placeObsidianLocations() {
+    /*public void placeObsidianLocations() {
         game.getConfig().getCoreLocations().stream().map(LocationData::getLocation).forEach(location -> location.getWorld().setType(location, Material.OBSIDIAN));
     }
 
@@ -75,5 +75,5 @@ public class BreakCoreMission extends Mission {
         }
 
         return true;
-    }
+    }*/
 }

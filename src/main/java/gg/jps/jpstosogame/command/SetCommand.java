@@ -9,12 +9,25 @@ import co.aikar.commands.bukkit.contexts.OnlinePlayer;
 import gg.jps.jpstosogame.JpsTosoGame;
 import gg.jps.jpstosogame.data.LocationData;
 import gg.jps.jpstosogame.game.TosoConfig;
+import gg.jps.jpstosogame.game.handler.InGameHandler;
+import gg.jps.jpstosogame.game.handler.WaitingHandler;
 import org.bukkit.entity.Player;
+import pakira.game.Game;
 
 import java.util.Locale;
 
 @CommandAlias("jtg")
 public class SetCommand extends BaseCommand {
+
+    @Subcommand("start")
+    @CommandPermission("toso.start")
+    public void on(){
+        JpsTosoGame.getInstance().getGame().ifPresent(tosoGame -> {
+            if (tosoGame.getCurrentHandler() instanceof WaitingHandler waitingHandler){
+                waitingHandler.nextHandlerAndStart();
+            }
+        });
+    }
 
     @Subcommand("set")
     @CommandPermission("toso.set")
@@ -26,7 +39,10 @@ public class SetCommand extends BaseCommand {
             switch (option) {
                 case SET_OPENING_GAME_LOCATION -> config.setOpeningGameLocation(locationData);
                 case SET_PRISON_LOCATION -> config.setPrisonLocation(locationData);
-                case SET_CORE_LOC -> config.setCoreLocations(locationData);
+                // case SET_CORE_LOC -> config.setCoreLocations(locationData);
+                case SET_LAVA_LOCATION -> config.setLavaLocation(locationData);
+                case SET_DIAMOND_BLOCK -> config.setDiamondBlockLocation(locationData);
+                case SET_LAVA_LEVER -> config.setLavaStopLever(locationData);
                 case SET_GOAL_LOCATION -> config.setGoalLocation(locationData);
             }
 
@@ -84,7 +100,10 @@ public class SetCommand extends BaseCommand {
     private enum Option {
         SET_OPENING_GAME_LOCATION,
         SET_PRISON_LOCATION,
-        SET_CORE_LOC,
+        // SET_CORE_LOC,
+        SET_LAVA_LEVER,
+        SET_LAVA_LOCATION,
+        SET_DIAMOND_BLOCK,
         SET_GOAL_LOCATION
     }
 

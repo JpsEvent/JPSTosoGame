@@ -9,6 +9,7 @@ import gg.jps.jpstosogame.util.Cuboid;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import pakira.game.Game;
@@ -42,6 +43,7 @@ public class TosoGame extends Game {
     private final Set<UUID> escapePlayers = new HashSet<>();
 
     private final Set<UUID> hunterPlayers = new HashSet<>();
+    private final Set<UUID> diamondGetPlayers = new HashSet<>();
 
     public TosoGame(TosoConfig config) {
         super(JpsTosoGame.getInstance());
@@ -83,6 +85,15 @@ public class TosoGame extends Game {
     public void addEscape(GamePlayer player) {
         if (isHunter(player.getPlayer())) return;
         escapePlayers.add(player.getUniqueId());
+    }
+
+    public void addDiamondGetPlayer(GamePlayer player){
+        if (isHunter(player.getPlayer()))return;
+        diamondGetPlayers.add(player.getUniqueId());
+    }
+
+    public boolean isGetDiamond(GamePlayer player){
+        return diamondGetPlayers.contains(player.getUniqueId());
     }
 
     public void addHunter(GamePlayer player) {
@@ -155,7 +166,7 @@ public class TosoGame extends Game {
     }
 
     public boolean isSpectator(Player player) {
-        return false;
+        return player.getGameMode() == GameMode.SPECTATOR;
     }
 
     public void sendMessageSpectators(GamePlayer player, String message) {

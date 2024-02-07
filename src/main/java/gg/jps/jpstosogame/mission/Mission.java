@@ -5,6 +5,7 @@ import org.bukkit.Sound;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 @Getter
@@ -38,6 +39,10 @@ public abstract class Mission implements Listener {
     }
 
     public void onMove(PlayerMoveEvent event) {
+
+    }
+
+    public void onClick(PlayerInteractEvent event){
 
     }
 }

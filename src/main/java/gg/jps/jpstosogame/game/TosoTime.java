@@ -27,7 +27,7 @@ public class TosoTime {
             final String formattedTimeLeft = TimeFormat.format((int) timeLeft);
 
             // 割愛
-            if (timeLeft == game.getConfig().getPlaceBlockMissionTime()) {
+            /*if (timeLeft == game.getConfig().getPlaceBlockMissionTime()) {
                 game.getMissionManager().startPlaceBlockMission();
             }
 
@@ -38,11 +38,18 @@ public class TosoTime {
 
             if (timeLeft == game.getConfig().getCraftMissionTime()) {
                 game.getMissionManager().startCraftMission();
+            }*/
+
+            if (timeLeft == game.getConfig().getLavaStopMissionTime()){
+                game.getMissionManager().startLavaStopMission();
             }
 
+            if (timeLeft == game.getConfig().getDiamondGetMissionTime()){
+                game.getMissionManager().startDiamondGetMission();
+            }
 
             if (timeLeft == 0) {
-                game.getMissionManager().getCraftMission().onFailed();
+                // game.getMissionManager().getCraftMission().onFailed();
                 game.getBossBar().hide();
                 game.title("&dゲーム終了", "");
                 game.sound(Sound.ENTITY_ENDER_DRAGON_DEATH);
