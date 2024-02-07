@@ -59,6 +59,7 @@ public class LavaStopMission extends Mission {
         game.sound(Sound.ENTITY_ENDER_DRAGON_AMBIENT);
         game.broadcast(String.format("&b%sがマグマの塞き止めに成功しました。", event.getPlayer().getName()));
         game.title("&b第2ミッションクリア", "");
+        game.getConfig().getLavaLocation().getLocation().getBlock().setType(Material.AIR);
     }
 
     public void strongHunters() {
