@@ -44,6 +44,7 @@ public class TosoConfig {
         this.explosionHunterBoxes = Set.of(waitingLocation);
         // this.coreLocations = Set.of(waitingLocation);
         this.lavaStopLever = waitingLocation;
+        this.lavaLocation = waitingLocation;
         this.diamondBlockLocation = waitingLocation;
         this.goalArea = new CuboidData(waitingLocation, waitingLocation);
         this.prisonArea = new CuboidData(waitingLocation, waitingLocation);
